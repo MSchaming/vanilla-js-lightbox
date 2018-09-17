@@ -1,0 +1,675 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+
+  // ******  VARIABLES ******
+
+  // As RGBa codes */
+
+  $white: #fffff0;
+  $white2: #f8f7eb;
+  $white-light: lighten($white, 2%);
+
+
+
+//Color Alt
+
+$alt-color1: rgba(154, 130, 84, 1);
+$alt-color2: rgba(114, 179, 173, 1);
+$alt-color3: rgba(255, 247, 172, 1);
+$alt-color4: rgba(255, 190, 68, 1);
+$alt-color5: rgba(254, 250, 205, 1);
+
+$nav-light: lighten($alt-color2, 10%);
+$nav-hover: darken($alt-color5, 30%);
+// $mobile-nav-color: darken($alt-color1, 25%);
+
+
+//Color Schemes
+
+body {
+    background: $white-light;
+   
+}
+
+
+
+.page-header {
+    background: rgba($white-light, .95);;
+}
+
+.nav-menu {
+    background: $alt-color2;
+
+    a {
+        color: $alt-color5;
+        text-shadow: 1.5px 1px 1px rgba(150, 150, 150, 0.94)
+    }
+}
+
+.mobile-menu-icon {
+     border: 2px solid rgba(0, 0, 0, .6);
+
+
+    .bar {
+        background: rgba(0, 0, 0, .6);
+    }
+}
+
+
+
+
+
+hr {
+    color: $alt-color2;
+    background-color: $alt-color2;
+    height: 1px;
+}
+
+
+
+//Font Stacks
+
+$font-stack-primary:  'Open Sans', sans-serif;
+
+
+
+// ******  Mixins ******
+
+@mixin a-test {
+    border: .5px dotted red;
+}
+
+@mixin b-test {
+    border: .5px dotted blue;
+}
+
+@mixin images {
+    display: block;
+    max-width: 100%;
+     
+   
+    // border-radius: 2%;
+}
+
+@mixin hero-image {
+    margin-top: 70px;
+    width: 100%;
+    height: 200px;
+}
+
+
+
+
+// ******  Base Styles ******
+
+body {    
+    font-family: $font-stack-primary;
+    font-weight: 300;
+    line-height: 1.25;
+    font-size: 1rem;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: black;
+     
+}
+ 
+
+h2,
+h3, 
+a {
+    font-weight: 400;
+}
+
+div.title {
+    height: 0;
+}
+
+figcaption {
+    display: none;
+}
+
+// ******  Layout Styles ******
+
+
+header {
+    margin: 0px;
+
+}
+
+.page-header {
+    display: flex;
+    align-items: center; //vertical alignment
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 70px;
+    width: 100%;
+    z-index: 3;
+    transition: transform .3s ease-out;
+    .page-header-content {
+        width: 100%;
+        margin: 0 auto;
+    }
+h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .85rem;
+    padding-left: 15px;
+    }   
+}
+
+ 
+
+.main-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+
+}
+
+
+.wrapper {
+    width: 90%;
+    margin: 0px auto;
+    overflow-x: hidden;
+    transition: transform .3s ease-out;
+
+}
+
+section {
+    text-align: center;
+    padding: .5rem;
+    margin: 1.5rem auto;
+}
+
+
+.fp-card {
+    margin: 0;
+    
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    
+    section {
+        margin: .25rem auto;
+    }
+} 
+
+
+// ******  Nav Styles ******
+
+.main-nav {
+    margin-top: 100px;
+    li {
+        width: 100%; 
+        text-align: center;
+         
+    }
+        a {
+            padding: .5rem;  
+             
+        }
+    }
+
+
+.nav-menu {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 200px;
+    
+    -ms-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -webkit-transform: translateX(200px);
+    transform: translateX(200px);
+
+    transition:  transform .3s ease-out; 
+}
+
+.link-title {
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    margin-bottom: .75rem;
+}
+
+.link:hover {
+    color: $nav-hover;   
+}
+
+.nav-divider {
+    border: 1px solid $alt-color5;
+    width: 80%;
+    margin: 10px auto;
+}
+
+
+// ******  Mobile Menu Icon ******
+
+.mobile-menu-icon {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    top: 16px;
+    right: 30px;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    padding: 5px;
+    transition: border-color .3 ease-out;
+}
+
+.bar {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    transition: transform .3s ease-out, translate .3s ease-out, opacity .5s ease-out;   
+}
+
+.bar:first-child {
+    top: 0;
+    
+}
+
+.bar:nth-child(2) {
+    opacity: 1;
+}
+
+.bar:last-child {
+    bottom: 0;
+}
+
+.bar + .bar {
+    margin-top: 2px;
+}
+
+//Show Side-Menu Styles
+
+
+.show-menu .nav-menu{
+    -ms-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+.show-menu .page-header,
+.show-menu .hero-wrapper,
+.show-menu .wrapper,
+.show-menu footer {
+    -ms-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -webkit-transform: translateX(-200px);
+    transform: translateX(-200px);
+}
+
+
+.show-menu .bar:first-child {
+    transform: rotate(45deg) translate(4px, 8px);
+    width: 125%;
+    
+}
+
+.show-menu .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.show-menu .bar:last-child {
+    -ms-transform: rotate(-45deg) translate(4px, -9px);
+    -moz-transform: rotate(-45deg) translate(4px, -9px);
+    -webkit-transform: rotate(-45deg) translate(4px, -9px);
+    transform: rotate(-45deg) translate(4px, -9px);
+    width: 125%;
+    
+}
+
+.show-menu .mobile-menu-icon {
+    border-color: $alt-color5;
+    .bar {
+        background-color: $alt-color5;
+    }
+}
+
+// ******  Hero Image Styles ******
+
+.hero-wrapper {
+    margin-top: 70px;
+    width: 100%;
+    height: 200px;
+    position: relative; 
+    height: 200px;
+    background: url('../../img/CAD-hero-image.jpg') center no-repeat;
+    background-size: cover;  
+    transition:  transform .3s ease-out;
+}
+
+
+
+.title {
+    display: flex;
+    justify-content: center;  
+}
+
+
+
+
+// ******  Content Styles ******
+
+main h2,
+section h2
+ {
+    text-align: center;
+}
+
+.center {
+    display: block;
+    text-align: center;
+    margin: 1.5rem;
+}
+
+.content-a {
+    display: inline;
+}
+
+.content-a:hover {
+    color: darken($alt-color2, 5%);
+}
+
+.fp-card img{
+    @include images;
+}
+
+.fp-card {
+     
+    h3 {
+    text-align: center;
+    } 
+    p {
+        padding: 0 .75rem;
+        text-align: center;
+    }
+    a {
+        padding: .25rem 0;
+        margin-bottom: 1.5rem;
+    }
+}
+
+    .fp-card-overlay a:hover {
+        color: darken($alt-color2, 10%);
+    }
+
+    #news {
+        margin-top: 0rem;
+
+        h4 {
+            margin-top: 3rem;
+            text-decoration: underline;
+        } div {
+            text-align: left;
+        }
+    }
+  
+//****** Gallery styles *****
+
+
+
+.gallery-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 2;
+    opacity: 0;
+    background-color: rgba(0,0,0, .9);
+    text-align: center;
+    transition: opacity .5s ease-out;
+
+}
+
+div.show-overlay {
+    height: 100%;
+    opacity: 1;
+    
+}
+
+.gallery-image { 
+    margin-top: 150px;
+    max-width: 85%;
+    max-height: 50%  
+}
+
+
+
+
+//****** footer styles *****
+
+footer {
+    background: $alt-color1;
+    color: $alt-color5;
+    transition:  transform .3s ease-out;
+    width: 100%;
+    a {
+        display: block;      
+    } 
+    
+}
+
+.footer-nav {
+    margin-bottom: 1rem;
+}
+ .footer-nav li {
+    margin: .5rem auto;
+ }
+
+.insta-icon {
+    font-size: 30px;
+    margin: auto;
+    color: $alt-color5;
+    vertical-align: center;
+}
+
+.insta-div {
+    padding: .5rem;
+    
+    h4 {
+        margin-right: .5rem;
+    }
+}
+
+#footer-a  {
+    display: inline-flex;
+    flex-direction: row;
+     
+}
+
+.insta-div a {
+    color: $alt-color5;   
+}
+
+.footer-nav a:hover {
+    color: $alt-color5;
+}
+
+.insta-div:hover i,
+.insta-div:hover a {
+    color: darken($alt-color5, 10%);
+}
+
+
+
+// ******  Media Queries ******
+
+@media (min-width: 645px) {
+    
+    .hero-wrapper {
+        height: 250px;
+    }
+
+    footer section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 90%;  
+    }
+
+    .page-header h1 {
+        font-size: 1.25rem
+    }
+
+} //  / 645px
+
+@media (min-width: 800px) {
+    
+    .hero-wrapper {
+        height: 300px;
+    }
+}  // /800px
+
+@media (min-width: 825px) {
+
+
+    .fp-grid,
+    .news-grid { 
+        display: grid;
+        max-width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 15px 20px;
+        
+    }
+
+    .fp-card {
+        position: relative;
+        margin: 0;
+
+         figcaption {
+            display: block;
+            opacity: 1;
+            transition: opacity .2s ease-out;
+         } 
+     }
+
+       figcaption span{
+            position: absolute; 
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15%;
+            margin-top: 0;
+            color: black;
+            padding-top: 10px;
+            font-weight: 400;
+            background: rgba($alt-color5, .9);
+        }
+    
+
+
+    .fp-card-overlay {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: white;
+        opacity: 0;
+        font-size: 1rem;
+        -moz-transition: opacity .3s ease-in, background .4s ease-in;
+        -ms-transition: opacity .3s ease-in, background .4s ease-in;
+        -webkit-transition: opacity .3s ease-in, background .4s ease-in;
+        -o-transition: opacity .3s ease-in, background .4s ease-in;
+        transition: opacity .3s ease-in, background .4s ease-in;
+
+            a {
+            color: white; 
+            }
+        }
+
+
+    .fp-card:hover .fp-card-overlay {
+        opacity: .9;
+        background: $alt-color2;
+        z-index: 3;
+        h3 {
+            opacity: 1;
+        }
+        p {
+            opacity: 1;
+        }
+    }
+
+    .fp-card:hover figcaption {
+        opacity: 0;
+    }
+
+    .fp-card-overlay a:hover {
+        color: $nav-hover;
+    }
+
+    .gallery-image {
+        max-width: 640px;
+    }
+
+} // / 825px
+
+
+
+@media (min-width:  1000px) {
+    
+    .hero-wrapper {
+        height: 350px;
+    }
+
+
+    #news h4 {
+        text-align: center;
+    }
+}   // / 1000px
+
+
+@media (min-width:  1200px) {
+
+    .page-header-content {
+        max-width: 90%;
+    }
+
+    .mobile-menu-icon {
+        top: 16px;
+        right: 50px;
+    }
+  
+    .hero-wrapper {
+        height: 400px;
+        margin: 80px auto 0px auto;
+        max-width: 1800px;
+         }
+
+        
+    .wrapper {
+        max-width: 1800px;
+        margin: 0px auto;
+    }
+    
+} // / 1200px
+
+@media (min-width: 1300px) {
+    
+    main {
+        text-align: center;
+    }
+
+}
+
+
+
